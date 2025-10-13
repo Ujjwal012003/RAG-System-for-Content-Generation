@@ -1,0 +1,8 @@
+[2025-10-09T12:48:02] Setting up LightRAG model functions with LOCAL MODELS...
+[2025-10-09T12:48:02] RAG-Anything initialized with LOCAL MODELS (LLaVA + LLaMA + all-MiniLM)
+[2025-10-09T12:48:02] Verifying LightRAG initialization...
+[2025-10-09T12:48:28] ✅ LightRAG successfully initialized with pipeline status
+[2025-10-09T12:48:28] ✅ LightRAG is ready for queries
+[2025-10-09T12:48:41] Executing query with LightRAG + BM25: 'what is electric charge'
+[2025-10-09T12:48:41] LightRAG query failed: 'function' object has no attribute 'func'
+[2025-10-09T12:48:41] RAG-Anything query failed: 'function' object has no attribute 'func'

@@ -1,0 +1,7 @@
+[2025-10-08T20:00:50] Setting up LightRAG model functions with LOCAL MODELS...
+[2025-10-08T20:00:50] RAG-Anything initialized with LOCAL MODELS (LLaVA + LLaMA + all-MiniLM)
+[2025-10-08T20:00:50] Verifying LightRAG initialization...
+[2025-10-08T20:01:00] ⚠️ LightRAG initialization issue: Failed to initialize LightRAG instance: 'function' object has no attribute 'embedding_dim'
+[2025-10-08T20:01:00] Start: leph101.pdf
+[2025-10-08T20:01:30] Error: leph101.pdf -> Mineru command failed with return code 0: ["2025-10-08 20:01:29.345 | ERROR    | mineru.cli.client:parse_doc:201 - Fast download using 'hf_transfer' is enabled (HF_HUB_ENABLE_HF_TRANSFER=1) but 'hf_transfer' package is not available in your environment. Try `pip install hf_transfer`.", "ModuleNotFoundError: No module named 'hf_transfer'", 'raise ValueError(', "ValueError: Fast download using 'hf_transfer' is enabled (HF_HUB_ENABLE_HF_TRANSFER=1) but 'hf_transfer' package is not available in your environment. Try `pip install hf_transfer`."]
+[2025-10-08T20:01:30] Start: leph102.pdf

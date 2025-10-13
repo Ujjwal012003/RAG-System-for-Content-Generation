@@ -1,0 +1,12 @@
+Couldn't find '/root/.ollama/id_ed25519'. Generating new private key.
+Your new public key is: 
+
+ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIF+srQxZuRt2FNmG0sripKTejf0p8yljO8tcNd/Ejqmt
+
+time=2025-10-08T19:53:50.403Z level=INFO source=routes.go:1475 msg="server config" env="map[CUDA_VISIBLE_DEVICES: GPU_DEVICE_ORDINAL: HIP_VISIBLE_DEVICES: HSA_OVERRIDE_GFX_VERSION: HTTPS_PROXY: HTTP_PROXY: NO_PROXY: OLLAMA_CONTEXT_LENGTH:4096 OLLAMA_DEBUG:INFO OLLAMA_FLASH_ATTENTION:false OLLAMA_GPU_OVERHEAD:0 OLLAMA_HOST:http://127.0.0.1:11434 OLLAMA_INTEL_GPU:false OLLAMA_KEEP_ALIVE:5m0s OLLAMA_KV_CACHE_TYPE: OLLAMA_LLM_LIBRARY: OLLAMA_LOAD_TIMEOUT:5m0s OLLAMA_MAX_LOADED_MODELS:0 OLLAMA_MAX_QUEUE:512 OLLAMA_MODELS:/root/.ollama/models OLLAMA_MULTIUSER_CACHE:false OLLAMA_NEW_ENGINE:false OLLAMA_NOHISTORY:false OLLAMA_NOPRUNE:false OLLAMA_NUM_PARALLEL:1 OLLAMA_ORIGINS:[http://localhost https://localhost http://localhost:* https://localhost:* http://127.0.0.1 https://127.0.0.1 http://127.0.0.1:* https://127.0.0.1:* http://0.0.0.0 https://0.0.0.0 http://0.0.0.0:* https://0.0.0.0:* app://* file://* tauri://* vscode-webview://* vscode-file://*] OLLAMA_REMOTES:[ollama.com] OLLAMA_SCHED_SPREAD:false ROCR_VISIBLE_DEVICES: http_proxy: https_proxy: no_proxy:]"
+time=2025-10-08T19:53:50.405Z level=INFO source=images.go:518 msg="total blobs: 0"
+time=2025-10-08T19:53:50.405Z level=INFO source=images.go:525 msg="total unused blobs removed: 0"
+time=2025-10-08T19:53:50.406Z level=INFO source=routes.go:1528 msg="Listening on 127.0.0.1:11434 (version 0.12.3)"
+time=2025-10-08T19:53:50.406Z level=INFO source=gpu.go:217 msg="looking for compatible GPUs"
+time=2025-10-08T19:53:50.745Z level=WARN source=cuda_common.go:60 msg="old CUDA driver detected - please upgrade to a newer driver for best performance" version=12.7
+time=2025-10-08T19:53:50.745Z level=INFO source=types.go:131 msg="inference compute" id=GPU-72544b0d-19a2-c9a5-69b4-14cdeefe7c07 library=cuda variant=v12 compute=8.9 driver=12.7 name="NVIDIA L4" total="22.1 GiB" available="21.9 GiB"

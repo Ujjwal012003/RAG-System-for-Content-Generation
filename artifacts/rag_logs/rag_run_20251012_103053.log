@@ -1,0 +1,7 @@
+[2025-10-12T10:30:53] Setting up LightRAG model functions with LOCAL MODELS...
+[2025-10-12T10:30:53] RAG-Anything initialized with LOCAL MODELS (LLaVA + LLaMA + all-MiniLM)
+[2025-10-12T10:30:53] Verifying LightRAG initialization...
+[2025-10-12T10:31:23] ✅ LightRAG successfully initialized with pipeline status
+[2025-10-12T10:31:23] ✅ LightRAG is ready for queries
+[2025-10-12T10:31:23] Start: leph101.pdf
+[2025-10-12T10:31:23] Invoking process_document_complete(timeout=600s) for leph101.pdf

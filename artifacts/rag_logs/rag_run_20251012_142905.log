@@ -1,0 +1,13 @@
+[2025-10-12T14:29:05] Setting up LightRAG model functions with LOCAL MODELS...
+[2025-10-12T14:29:05] RAG-Anything initialized with LOCAL MODELS (LLaVA + LLaMA + all-MiniLM)
+[2025-10-12T14:29:05] Verifying LightRAG initialization...
+[2025-10-12T14:29:41] ✅ LightRAG successfully initialized with pipeline status
+[2025-10-12T14:29:41] ✅ LightRAG is ready for queries
+[2025-10-12T14:29:41] Start: leph104.pdf
+[2025-10-12T14:29:41] Invoking process_document_complete(timeout=600s) for leph104.pdf
+[2025-10-12T15:56:09] Done: leph104.pdf in 5188.4s
+[2025-10-12T15:56:09] Start: leph105.pdf
+[2025-10-12T15:56:09] Invoking process_document_complete(timeout=600s) for leph105.pdf
+[2025-10-12T15:59:27] Error: leph105.pdf -> Mineru command failed with return code 0: ['2025-10-12 15:59:22.343 | ERROR    | mineru.cli.client:parse_doc:201 - CUDA error: unknown error', 'CUDA kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be incorrect.', 'torch.AcceleratorError: CUDA error: unknown error', 'CUDA kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be incorrect.']
+[2025-10-12T15:59:27] Start: leph106.pdf
+[2025-10-12T15:59:27] Invoking process_document_complete(timeout=600s) for leph106.pdf

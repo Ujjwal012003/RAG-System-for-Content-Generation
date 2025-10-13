@@ -1,0 +1,5 @@
+# OpenAI API dependency for LightRAG + RAG-Anything
+openai>=1.0.0
+
+# Other dependencies (if not already installed)
+numpy>=1.24.0
