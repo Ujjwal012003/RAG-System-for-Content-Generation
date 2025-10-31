@@ -1,0 +1,1452 @@
+research_physics_chapter:
+  description: >
+    Research Chapter {chapter_number}: {chapter_name} COMPREHENSIVELY using rag_anything_enhancer tool.
+    
+    MANDATORY EXECUTION:
+    Make ALL 10 RAG queries specified in your goal (DO NOT skip any):
+    1. Complete NCERT syllabus and table of contents
+    2. Introduction and fundamental concepts
+    3. All formulas, equations, laws, derivations
+    4. NCERT solved examples with complete solutions
+    5. Theory explanations and physical concepts
+    6. Applications, experiments, real-world uses
+    7. Important points and key concepts
+    8. Diagrams, figures, visual aids descriptions
+    9. Practice problems and exercises
+    10. Additional HC Verma examples
+    
+    DELIVERABLE CHECKLIST:
+    ✓ Complete list of ALL NCERT sections and subsections (verify against TOC)
+    ✓ Every formula mentioned in NCERT with variable definitions
+    ✓ All NCERT solved examples with step-by-step solutions
+    ✓ All figure/diagram descriptions from NCERT
+    ✓ All applications and experiments mentioned
+    ✓ Additional quality examples from HC Verma
+    ✓ Cross-reference to ensure ZERO topic omissions
+    
+    QUALITY STANDARD: If you miss even ONE NCERT topic, the research is INCOMPLETE.
+  
+  expected_output: >
+    Comprehensive research document (2000-2500 words) containing:
+    - Complete NCERT table of contents with ALL sections listed
+    - Every topic, subtopic, and concept from NCERT
+    - All formulas with variable definitions and units
+    - All NCERT solved examples with complete solutions
+    - All figure descriptions (10-12 figures identified)
+    - All applications and experiments
+    - Additional HC Verma examples for depth
+    - 100% NCERT coverage verified
+  
+  agent: research_agent
+
+
+create_topic_index:
+  description: >
+    Create detailed hierarchical outline for Chapter {chapter_number}: {chapter_name} with ZERO topic omission.
+    
+    ⚠️ CRITICAL: You MUST use SerperDev tool FIRST before doing anything else!
+    
+    STEP 1: MANDATORY SERPERDEV WEB SEARCH (DO THIS FIRST!):
+    
+    ⚠️ CRITICAL: Execute MULTIPLE SerperDev searches to get COMPLETE coverage!
+    
+    Query 1 - Official TOC:
+    "NCERT Class 12 Physics Chapter {chapter_number} {chapter_name} official table of contents site:ncert.nic.in"
+    
+    Query 2 - All Topics:
+    "NCERT Class 12 Physics Chapter {chapter_number} {chapter_name} all topics subtopics complete list"
+    
+    Query 3 - Chapter-Specific:
+    "NCERT Class 12 Physics Chapter {chapter_number} {chapter_name} all topics subtopics complete list"
+    
+    Note: These are EXAMPLES to guide topic discovery. Agent should adapt query based on actual chapter being generated.
+    
+    From ALL SerperDev results:
+    - Extract COMPLETE list of ALL sections, subsections, and sub-subsections
+    - Look for official NCERT website results (ncert.nic.in)
+    - Note down EVERY topic including minor ones (experiments, devices, applications)
+    - Create comprehensive checklist of ALL NCERT topics
+    - Pay special attention to practical applications and devices mentioned
+    
+    STEP 2: QUERY RAG FOR ADDITIONAL DETAILS:
+    "Chapter {chapter_number} {chapter_name} NCERT complete table of contents all sections subsections topics"
+    
+    STEP 3: MERGE BOTH SOURCES:
+    - Combine SerperDev official TOC + RAG results + research brief
+    - SerperDev results are PRIMARY source (most authoritative)
+    - RAG and research brief are supplementary
+    
+    STEP 4: CREATE COMPREHENSIVE INDEX WITH MANDATORY SUBSECTIONS:
+    
+    ⚠️ YOU MUST CREATE SUBSECTIONS! This is NOT optional!
+    
+    CRITICAL NUMBERING REQUIREMENT:
+    - Major sections: {chapter_number}.1, {chapter_number}.2, {chapter_number}.3, {chapter_number}.4...
+    - Subsections: {chapter_number}.1.1, {chapter_number}.1.2, {chapter_number}.1.3...
+    - Sub-subsections: {chapter_number}.1.1.1, {chapter_number}.1.1.2...
+    - NEVER use independent numbering like 1, 2, 3, 4
+    - ALL section numbers MUST start with chapter number
+    - Example for Chapter 1: 1.1, 1.2, 1.3 (NOT 1, 2, 3)
+    
+    STRUCTURE REQUIREMENTS:
+    - Create 10-12 major sections covering ALL NCERT topics from research brief
+    
+    MANDATORY SUBSECTION RULES (You MUST create subsections for these):
+    
+    ⚠️ CRITICAL: At least 60% of major sections MUST have subsections!
+    
+    1. ANY section with "and" in title → MUST split into subsections
+       Example: "Series and Parallel Resistances" → 
+       - X.Y.1 Series Combination (derivation, formula, examples)
+       - X.Y.2 Parallel Combination (derivation, formula, examples)
+       - X.Y.3 Mixed Combinations (complex networks)
+    
+    2. "Combination of..." topics → MUST have subsections
+       Example: "Combination of Cells" →
+       - X.Y.1 Series Combination of Cells
+       - X.Y.2 Parallel Combination of Cells
+       - X.Y.3 Mixed Grouping of Cells
+    
+    3. Laws with multiple parts → MUST have subsections
+       Example: "Kirchhoff's Laws" →
+       - X.Y.1 Kirchhoff's Current Law (KCL)
+       - X.Y.2 Kirchhoff's Voltage Law (KVL)
+       - X.Y.3 Applications in Circuit Analysis
+    
+    4. "Potential Due to..." or "Field Due to..." → MUST have subsections
+       Example: "Electric Potential Due to Charges" →
+       - X.Y.1 Potential Due to Point Charge
+       - X.Y.2 Potential Due to Electric Dipole
+       - X.Y.3 Potential Due to System of Charges
+       - X.Y.4 Potential Due to Continuous Distribution
+    
+    5. Devices/Instruments → MUST have 4-7 detailed subsections
+       Example: "Moving Coil Galvanometer" →
+       - X.Y.1 Principle (basic concept, 200-250 words + conceptual example)
+       - X.Y.2 Construction (250-300 words - MUST include ALL components):
+         * Rectangular coil (number of turns, area)
+         * Soft iron cylindrical core (WHY: makes field radial)
+         * Radial magnetic field (HOW it's created)
+         * Phosphor bronze suspension wire (WHY: provides restoring torque)
+         * Pointer and scale (HOW deflection is measured)
+         * Permanent magnet (type, field strength)
+         + Conceptual example + Mathematical example
+       - X.Y.3 Theory and Derivation (250-300 words with step-by-step derivation)
+       - X.Y.4 Current Sensitivity (200-250 words: definition, formula, derivation, example)
+       - X.Y.5 Voltage Sensitivity (200-250 words: definition, formula, derivation, example)
+       - X.Y.6 Conversion to Ammeter (250-300 words - MUST include):
+         * WHY shunt is needed (parallel low resistance)
+         * Shunt formula: S = IgG/(I - Ig)
+         * Complete derivation with circuit diagram reference
+         * Numerical example with realistic values
+         * Design considerations
+       - X.Y.7 Conversion to Voltmeter (250-300 words - MUST include):
+         * WHY high resistance is needed (series)
+         * Series resistance formula: R = (V/Ig) - G
+         * Complete derivation with circuit diagram reference
+         * Numerical example with realistic values
+         * Design considerations
+       
+       Example: "Cyclotron" →
+       - X.Y.1 Principle and Basic Concept (250-300 words + conceptual example)
+       - X.Y.2 Construction and Working (300-350 words - detailed components)
+       - X.Y.3 Cyclotron Frequency Derivation (250-300 words with full derivation)
+       - X.Y.4 Maximum Energy (250 words: formula, derivation, numerical example)
+       - X.Y.5 Limitations (200-250 words with examples)
+       - X.Y.6 Applications (200-250 words with real examples)
+       
+       ⚠️ CRITICAL: Each device subsection MUST have:
+       - Figure/diagram at top (HTML img tag)
+       - Conceptual example (50-70 words)
+       - Detailed explanation (200-300 words)
+       - Mathematical example with full solution (80-120 words)
+    
+    6. "Energy Stored" topics → MUST have subsections
+       Example: "Energy Stored in Capacitor" →
+       - X.Y.1 Derivation of Energy Formula
+       - X.Y.2 Energy Density in Electric Field
+       - X.Y.3 Applications
+    
+    7. Topics with multiple formulas/derivations → MUST have subsections
+    
+    8. Resistance/Resistivity topics → MUST have subsections
+       Example: "Resistance and Resistivity" →
+       - X.Y.1 Electrical Resistance
+       - X.Y.2 Resistivity and Conductivity
+       - X.Y.3 Temperature Dependence
+       - X.Y.4 Color Code of Resistors
+    
+    SUBSECTION GUIDELINES - MANDATORY FOR PROPER BREAKDOWN:
+    
+    ⚠️ CRITICAL: Subsections are MANDATORY for proper topic breakdown and explanation!
+    
+    - Each subsection: MINIMUM 200 words, target 200-250 words (ENFORCE THIS!)
+    - Parent section can have brief intro (50-100 words) then subsections
+    - Use sub-subsections (X.Y.Z) when topic is very detailed
+    - Minimum 70% of major sections MUST have subsections (increased from 60%)
+    - If NCERT has subsections, YOU MUST create them!
+    
+    WHY SUBSECTIONS ARE MANDATORY:
+    1. Proper breakdown of complex topics into digestible parts
+    2. Better organization and navigation for students
+    3. Each subtopic gets focused, detailed explanation (200-250 words)
+    4. Allows for specific examples for each concept
+    5. Improves learning by chunking information logically
+    
+    WHEN TO CREATE SUBSECTIONS (MANDATORY):
+    - ✅ Laws with multiple aspects (e.g., Kirchhoff's Laws → KCL + KVL)
+    - ✅ Devices with components (e.g., Galvanometer → Principle, Construction, Theory, etc.)
+    - ✅ Combinations (e.g., Capacitors → Series, Parallel, Mixed)
+    - ✅ Topics with derivations (e.g., Energy → Derivation, Energy Density, Applications)
+    - ✅ Material properties (e.g., Magnetic Materials → Diamagnetic, Paramagnetic, Ferromagnetic)
+    - ✅ Any topic that NCERT breaks into subsections
+    - ✅ Any topic that needs >600 words to explain properly
+    
+    ❌ REJECT if complex topics have NO subsections!
+    ❌ REJECT if subsections are missing when NCERT has them!
+    
+    ⚠️ CRITICAL WORD COUNT ENFORCEMENT:
+    - Main sections WITHOUT subsections: 400-450 words minimum
+    - Main sections WITH subsections: 50-100 word intro + subsections
+    - Each subsection: 200-250 words minimum (NOT 50-100 words!)
+    - Device subsections (Construction, Theory, etc.): 250-300 words
+    - REJECT if subsections are less than 200 words!
+    
+    FOR EACH SECTION SPECIFY:
+    1. Section number (chapter-based) and descriptive title
+    2. Learning objectives (what student will learn)
+    3. Core concepts to cover (from research brief)
+    4. All formulas needed with variable names
+    5. 2 worked examples with difficulty levels (Basic/Intermediate/Advanced)
+    6. 1-2 figures with specific descriptions of what to show
+    7. Real-world applications to discuss
+    8. Target word count: 400-450 words per major section
+    
+    STEP 5: MANDATORY TOPIC VERIFICATION (DO NOT SKIP!):
+    
+    ⚠️ CRITICAL: Before finalizing index, verify ALL topics are included!
+    
+    CHAPTER-SPECIFIC MANDATORY TOPICS (MUST be in index):
+    
+    Chapter 3 (Current Electricity) - MUST INCLUDE:
+    - Electric Current and Current Density
+    - Drift Velocity and Mobility
+    - Ohm's Law
+    - Resistance and Resistivity (with subsections)
+    - Temperature Dependence of Resistance
+    - Combination of Resistors (MUST have: Series, Parallel, Mixed)
+    - Cells, EMF, and Internal Resistance
+    - Combination of Cells (MUST have: Series, Parallel)
+    - Kirchhoff's Laws (MUST have: KCL, KVL as subsections)
+    - Wheatstone Bridge (MANDATORY - cannot skip!)
+    - Meter Bridge (MANDATORY - cannot skip!)
+    - Potentiometer (MANDATORY - with subsections: Principle, Applications)
+    - Electrical Energy and Power
+    - Heating Effect of Current (Joule's Law)
+    - Carbon Resistors and Color Code
+    
+    Chapter 2 (Electrostatic Potential) - MUST INCLUDE:
+    - Electric Potential and Potential Difference
+    - Potential Due to Point Charge, Dipole, System of Charges
+    - Equipotential Surfaces
+    - Capacitors (Definition, Parallel Plate)
+    - Combination of Capacitors (Series, Parallel)
+    - Energy Stored in Capacitor
+    - Dielectrics and Polarization
+    - Van de Graaff Generator
+    
+    Chapter 4 (Moving Charges and Magnetism) - MUST INCLUDE:
+    - Introduction (Historical context: Oersted's discovery)
+    - Magnetic Force on Moving Charge (MUST have subsections: Lorentz Force, Direction, Properties)
+    - Motion in Magnetic Field (MUST have subsections: Circular Motion, Helical Motion)
+    - Force on Current-Carrying Conductor
+    - Torque on Current Loop and Magnetic Dipole Moment
+    - Biot-Savart Law (MUST have subsections: Statement, Applications)
+    - Magnetic Field of Straight Wire, Circular Loop, Solenoid
+    - Ampere's Circuital Law (MUST have subsections: Statement, Applications)
+    - Force Between Parallel Conductors and Definition of Ampere
+    - Cyclotron (MUST have subsections: Principle, Construction, Working, Frequency, Limitations, Applications)
+    - Moving Coil Galvanometer (MANDATORY - CANNOT BE SKIPPED! MUST have 7 subsections):
+      * X.Y.1 Principle
+      * X.Y.2 Construction (detailed: coil, core, suspension, magnet, pointer)
+      * X.Y.3 Theory and Derivation (torque equation, deflection)
+      * X.Y.4 Current Sensitivity (definition, formula, derivation)
+      * X.Y.5 Voltage Sensitivity (definition, formula, relation to current sensitivity)
+      * X.Y.6 Conversion to Ammeter (shunt formula derivation, numerical example)
+      * X.Y.7 Conversion to Voltmeter (series resistance formula, numerical example)
+    - Comparison Table: Series vs Parallel Resistor Combinations (if applicable)
+    - Comparison Table: Ammeter vs Voltmeter
+    - Properties Table: Magnetic Materials (if applicable)
+    
+    VERIFICATION CHECKLIST:
+    - Cross-check research brief to ensure EVERY NCERT topic has a section
+    - Verify all SerperDev topics are included
+    - Check for devices/instruments (Wheatstone, Meter Bridge, Potentiometer, etc.)
+    - Ensure all "combination" topics have subsections
+    - Mark interdependencies between sections
+    - Total figures planned: 10-12
+    - Total examples planned: 20-24
+    - Total main content target: 4000-5400 words
+    
+    ⚠️ REJECT index if ANY mandatory topic is missing!
+  
+  expected_output: >
+    Detailed hierarchical index (1000-1200 words) with SUBSECTIONS:
+    
+    EXAMPLE FORMAT (YOU MUST FOLLOW THIS):
+    
+    Section 2.1: Introduction to Electrostatic Potential
+    Section 2.2: Electric Potential
+      Subsection 2.2.1: Potential Due to Point Charge
+      Subsection 2.2.2: Potential Due to Electric Dipole
+      Subsection 2.2.3: Potential Due to System of Charges
+    Section 2.3: Equipotential Surfaces
+    Section 2.4: Capacitors
+      Subsection 2.4.1: Definition and Basic Concepts
+      Subsection 2.4.2: Parallel Plate Capacitor
+    Section 2.5: Combination of Capacitors
+      Subsection 2.5.1: Series Combination
+      Subsection 2.5.2: Parallel Combination
+    
+    REQUIREMENTS:
+    - 10-12 major sections with chapter-based numbering
+    - At least 60% of sections MUST have subsections (use ### in markdown)
+    - Complete NCERT topic coverage (100% verified with SerperDev)
+    - All mandatory topics from checklist MUST be present
+    - Per-section specifications: objectives, concepts, formulas, examples, figures
+    - Total planned: 10-12 figures, 20-24 examples, 4000-5400 words
+    - REJECT if missing: Wheatstone Bridge, Meter Bridge, Potentiometer (for Ch 3)
+  
+  agent: content_indexer
+  context:
+    - research_physics_chapter
+
+
+generate_detailed_content:
+  description: >
+    ⚠️⚠️⚠️ ABSOLUTE MANDATORY RULES - READ FIRST ⚠️⚠️⚠️
+    
+    YOU MUST WRITE AT LEAST 300 WORDS FOR EVERY SUBSECTION (###)!
+    YOU MUST WRITE AT LEAST 400 WORDS FOR EVERY MAIN SECTION (##)!
+    
+    DO NOT WRITE SHORT CONTENT! DO NOT WRITE ONLY FORMULAS!
+    EVERY SUBSECTION NEEDS: Explanation + Example + Derivation = 300+ WORDS MINIMUM!
+    
+    IF YOU WRITE LESS THAN 300 WORDS PER SUBSECTION, YOUR OUTPUT WILL BE REJECTED!
+    
+    ⚠️⚠️⚠️ END OF MANDATORY RULES ⚠️⚠️⚠️
+    
+    Generate comprehensive, student-friendly content for Chapter {chapter_number}: {chapter_name} 
+    following the topic index structure with STRICT quality standards.
+    
+    ⚠️ CRITICAL: If the index has SUBSECTIONS (e.g., 2.2.1, 2.2.2), you MUST create them using ### headers!
+    
+    FOR EACH SECTION - FOLLOW THIS EXACT WORKFLOW:
+    
+    STEP 1: QUERY RAG (3-4 queries per section - DO NOT SKIP):
+    - "Chapter {chapter_number} [section topic] NCERT theory explanation detailed"
+    - "Chapter {chapter_number} [section topic] formulas derivations"
+    - "Chapter {chapter_number} [section topic] solved examples numerical"
+    - "Chapter {chapter_number} [section topic] applications experiments"
+    
+    STEP 2: WRITE SECTION HEADER:
+    ## {chapter_number}.X Section Name
+    
+    ⚠️ CRITICAL: HEADING LEVELS - STRICT ENFORCEMENT:
+    
+    Main sections: ## X.Y Title (2 hashes)
+    Subsections: ### X.Y.Z Title (3 hashes) - NOT ####!
+    
+    WRONG:
+    ## 5.2 Main Section
+    #### 5.2.1 Subsection  ❌ (4 hashes - TOO SMALL!)
+    
+    CORRECT:
+    ## 5.2 Main Section
+    ### 5.2.1 Subsection  ✅ (3 hashes - CORRECT!)
+    
+    ❌ REJECT if subsections use #### (4 hashes)
+    ✅ ACCEPT only if subsections use ### (3 hashes)
+    (Use exact numbering from index)
+    
+    STEP 3: INSERT FIGURE (IMMEDIATELY after header, BEFORE content):
+    
+    <figure style="display: flex; flex-direction: column; align-items: center;">
+    <img src="https://lh3.googleusercontent.com/d" alt="Detailed descriptive alt text" style="max-width: 90%; height: auto;">
+    <figcaption style="text-align: center; margin-top: 8px;"><i><b>Figure {chapter_number}.X:</b> Comprehensive caption</i></figcaption>
+    </figure>
+    
+    STEP 3.5: CHECK FOR SUBSECTIONS IN INDEX:
+    
+    IF index shows subsections (e.g., 2.2.1, 2.2.2, 2.2.3):
+      - Write brief intro for parent section (50-100 words)
+      - Then create EACH subsection with ### header
+      - ⚠️ CRITICAL: Add figure/image at TOP of EACH subsection!
+      
+      Example:
+        ## 2.2 Electric Potential
+        
+        <figure style="display: flex; flex-direction: column; align-items: center;">
+        <img src="https://lh3.googleusercontent.com/d" alt="..." style="max-width: 90%; height: auto;">
+        <figcaption><i><b>Figure 2.2:</b> Overview of electric potential</i></figcaption>
+        </figure>
+        
+        [Brief intro paragraph 50-100 words]
+        
+        ### 2.2.1 Potential Due to Point Charge
+        
+        <figure style="display: flex; flex-direction: column; align-items: center;">
+        <img src="https://physics.ncert.gov.in/..." alt="..." style="max-width: 90%; height: auto;">
+        <figcaption><i><b>Figure 2.2.1:</b> Point charge potential</i></figcaption>
+        </figure>
+        
+        [200-300 words detailed content]
+        [Mathematical example at end]
+        
+        ### 2.2.2 Potential Due to Electric Dipole
+        
+        <figure style="display: flex; flex-direction: column; align-items: center;">
+        <img src="https://physics.ncert.gov.in/..." alt="..." style="max-width: 90%; height: auto;">
+        <figcaption><i><b>Figure 2.2.2:</b> Dipole potential</i></figcaption>
+        </figure>
+        
+        [200-300 words detailed content]
+        [Mathematical example at end]
+    
+    IF no subsections in index:
+      - Write full section content (400-450 words)
+      - Include 1-2 figures in the section
+    
+    STEP 4: WRITE MAIN CONTENT (400-450 WORDS for sections, 300-400 for subsections):
+    
+    ⚠️⚠️⚠️ REMINDER: MINIMUM 300 WORDS PER SUBSECTION! ⚠️⚠️⚠️
+    
+    COUNT YOUR WORDS! IF LESS THAN 300 WORDS, KEEP WRITING!
+    
+    ⚠️ CRITICAL CONTENT STRUCTURE FOR EVERY SUBSECTION - MANDATORY TEMPLATE:
+    
+    YOU MUST FOLLOW THIS EXACT STRUCTURE FOR EVERY ### SUBSECTION:
+    
+    ### X.Y.Z Subsection Title
+    
+    ⚠️ CRITICAL: IMAGE MUST BE FIRST THING AFTER SUBSECTION HEADING!
+    
+    <figure style="display: flex; flex-direction: column; align-items: center;">
+    <img src="..." alt="..." style="max-width: 90%; height: auto;">
+    <figcaption><i><b>Figure X.Y.Z:</b> Caption describing what the image shows</i></figcaption>
+    </figure>
+    
+    [Introduction: 40-60 words - What is this concept? Why is it important?]
+    
+    [Conceptual Explanation: 100-120 words - How does it work? Physical intuition. Real-world context.]
+    
+    **Conceptual Example:**
+    
+    [60-80 words - Real-world analogy or everyday scenario that illustrates the concept BEFORE introducing formulas. Use relatable examples like water flow, springs, everyday objects, etc.]
+    
+    [Mathematical Framework: 60-80 words explaining the mathematical approach]
+    
+    $$
+    formula
+    $$
+    
+    where:
+    - variable_1 = complete description with physical meaning (units)
+    - variable_2 = complete description with physical meaning (units)
+    - variable_3 = complete description with physical meaning (units)
+    
+    **Mathematical Example:**
+    
+    **Problem:** [Clear, realistic problem statement with context]
+    
+    **Given:**
+    - quantity_1 = value with units
+    - quantity_2 = value with units
+    
+    **To Find:** [What needs to be calculated]
+    
+    **Solution:**
+    
+    Step 1: [Explain reasoning for this step]
+    [Show calculation]
+    
+    Step 2: [Explain next step]
+    [Show calculation]
+    
+    Step 3: [Final calculation if needed]
+    [Show result]
+    
+    **Answer:** [Final result with units and physical interpretation]
+    
+    Total: 320-450 words per subsection ✓
+    
+    ⚠️ MANDATORY CHECKS FOR EVERY SUBSECTION (###):
+    ✓ Image at TOP (immediately after heading)
+    ✓ Conceptual example present (60-80 words) - MANDATORY!
+    ✓ Mathematical example present (100-150 words with full solution) - MANDATORY!
+    ✓ Explanation is 200+ words (excluding examples)
+    
+    ❌ REJECT IF ANY OF THESE ARE MISSING!
+    
+    ⚠️ CRITICAL: SUBSECTIONS (###) MUST HAVE EXAMPLES!
+    
+    DO NOT skip examples in subsections! Every ### heading MUST have:
+    1. Image at top
+    2. Explanation (200+ words)
+    3. **Conceptual Example:** section (60-80 words)
+    4. Formulas with definitions
+    5. **Mathematical Example:** section (100-150 words)
+    
+    Examples are NOT optional for subsections!
+    Main sections (##) need examples AND subsections (###) need examples!
+    
+    STEP 4.5: CONCEPTUAL EXAMPLES (MANDATORY FOR ALL SUBSECTIONS):
+    
+    ⚠️ EVERY subsection MUST have a conceptual example BEFORE formulas!
+    
+    This applies to ALL topics, especially:
+    - Laws (Ohm's Law, Kirchhoff's Laws, Faraday's Law, etc.)
+    - Devices (Galvanometer, Cyclotron, Transformer, etc.)
+    - Abstract concepts (Dipole, Equipotential, Energy Density, etc.)
+    - Physical phenomena (Interference, Diffraction, Photoelectric Effect, etc.)
+    
+    FORMAT:
+    
+    **Conceptual Understanding: [Title]**
+    
+    [2-3 paragraphs with real-world analogy]
+    
+    Example:
+    "Think of a water molecule (H₂O). The oxygen atom attracts electrons 
+    more strongly, becoming slightly negative (δ-), while hydrogen atoms 
+    become slightly positive (δ+). This creates an electric dipole!
+    
+    When you bring a charged comb near a water stream, the stream bends. 
+    Why? The water dipoles rotate to align with the comb's field, and 
+    opposite charges attract.
+    
+    This everyday phenomenon demonstrates dipole behavior - the same 
+    principle used in microwave ovens to heat food!"
+    
+    **Mathematical Description:**
+    
+    [Now introduce formulas]
+    
+    STEP 4.6: WRITE MAIN CONTENT PARAGRAPHS:
+    
+    Write 4-6 well-developed paragraphs (NOT bullet points):
+    
+    Paragraph 1 (Introduction - 60-80 words):
+    - Introduce concept with context and importance
+    - Connect to previous sections if applicable
+    
+    Paragraphs 2-3 (Core Explanation - 150-200 words):
+    - Explain concept thoroughly with physical intuition
+    - Use analogies and real-world examples
+    - Explain WHY, not just WHAT
+    - Break complex ideas into understandable parts
+    
+    Paragraph 4 (Mathematical Framework - 100-120 words):
+    - Introduce formulas with context
+    - Explain what each variable represents physically
+    - Show key derivations with reasoning
+    - Discuss units and typical values
+    
+    Paragraphs 5-6 (Applications - 90-100 words):
+    - Discuss practical applications
+    - Connect to technology or everyday phenomena
+    - Mention experimental verification
+    
+    WRITING STYLE REQUIREMENTS:
+    ✓ Write flowing textbook prose, NOT bullet points
+    ✓ Use clear, student-friendly language (Class 12 level)
+    ✓ Include transitional phrases between ideas
+    ✓ Maintain engaging, educational tone
+    ✓ Explain as if teaching face-to-face
+    
+    STEP 5: FORMULAS (Proper LaTeX with MANDATORY variable definitions):
+    
+    ⚠️ CRITICAL LATEX SYNTAX - STRICT ENFORCEMENT:
+    
+    - Inline math: $ equation $ (with spaces around $)
+    - Display math: $$equation$$ (on separate lines, NO spaces around $$)
+    
+    ❌ NEVER USE: \[ equation \] or \( equation \) - THESE WILL NOT RENDER!
+    ✅ ALWAYS USE: $$equation$$ for display math
+    ✅ ALWAYS USE: $ equation $ for inline math
+    
+    CORRECT EXAMPLE:
+    $$
+    F = ma
+    $$
+    
+    WRONG EXAMPLE (DO NOT USE):
+    \[
+    F = ma
+    \]
+    
+    ⚠️ If you use \[...\] syntax, the math will NOT render and content will be REJECTED!
+    
+    ⚠️ CRITICAL: After EVERY equation, you MUST add variable definitions!
+    
+    MANDATORY FORMAT (NO EXCEPTIONS):
+    $$
+    equation
+    $$
+    
+    where:
+    - [variable_1] = description (units)
+    - [variable_2] = description (units)
+    - [variable_3] = description (units)
+    
+    ENFORCEMENT RULES:
+    1. Define EVERY variable that appears in the equation
+    2. Include units in parentheses for each variable
+    3. Explain physical meaning, not just symbol name
+    4. Use proper LaTeX formatting for variables
+    5. If equation has constants (like epsilon_0, k, etc.), define them too
+    
+    GOOD EXAMPLE:
+    After writing drift velocity equation, you MUST write:
+    
+    where:
+    - j = current density vector (amperes per square meter, A/m²)
+    - n = number density of charge carriers (per cubic meter, m⁻³)
+    - q = charge of each carrier (coulombs, C)
+    - v_d = drift velocity vector (meters per second, m/s)
+    
+    BAD EXAMPLE (DO NOT DO THIS):
+    where v_d is drift velocity vector.
+    [This is INCOMPLETE - missing n, q, j definitions!]
+    
+    ⚠️ If you skip variable definitions, the content will be REJECTED!
+    
+    - Show important derivations step-by-step with reasoning
+    
+    STEP 6: EXAMPLES (MANDATORY IN EVERY SUBSECTION):
+    
+    ⚠️ CRITICAL: EVERY subsection MUST have:
+    1. One CONCEPTUAL example (before formulas) - 50-70 words
+    2. One MATHEMATICAL example (after formulas) - 80-120 words with full solution
+    
+    Main sections WITHOUT subsections: 2 examples (1 conceptual + 1 mathematical)
+    Main sections WITH subsections: Each subsection has 2 examples
+    
+    ⚠️ DIFFICULTY DISTRIBUTION (across whole chapter):
+    - 40% Basic (Board exam level) - Direct formula application, 1-2 steps
+    - 40% Intermediate (NEET level) - Multi-step, requires reasoning, 3-4 steps
+    - 20% Advanced (JEE level) - Complex scenarios, multiple concepts combined, 5+ steps
+    
+    IMPORTANT: Not all topics need numerical examples. Choose appropriate type:
+    
+    TYPE A - CONCEPTUAL EXAMPLE (for definitions, classifications, concepts):
+    
+    NUMBERING:
+    - In main sections: **Example 1:**, **Example 2:**
+    - In subsections: **Example:** (no number)
+    
+    **Example [number]:** [Descriptive Title] (Type: Conceptual)
+    
+    **Scenario:**
+    Describe a real-world situation that illustrates the concept.
+    Use everyday examples students can relate to (thermos flask, beaker, battery, etc.)
+    
+    **Explanation:**
+    Explain how this example demonstrates the concept.
+    Connect to the theory just discussed.
+    Use clear, intuitive language.
+    
+    **Key Insight:**
+    What does this example teach us about the concept?
+    
+    Example format:
+    "Consider a thermos flask containing hot coffee. The flask is designed with..."
+    
+    
+    TYPE B - NUMERICAL EXAMPLE (for formulas, calculations, quantitative topics):
+    
+    NUMBERING:
+    - In main sections: **Example 1:**, **Example 2:**
+    - In subsections: **Example:** (no number)
+    
+    **Example [number]:** [Descriptive Title] (Type: Numerical, Difficulty: Basic/Intermediate/Advanced)
+    
+    **Problem Statement:**
+    Write realistic, well-contextualized problem.
+    Use practical values (µC, nC, mA, NOT C or A).
+    
+    **Given:**
+    - List all quantities with proper units
+    - Use realistic values (5 µC, not 5 C)
+    
+    **To Find:**
+    State what needs to be calculated
+    
+    **Concept:**
+    Explain which principle/formula applies and why
+    
+    **Solution:**
+    Step 1: [Explain reasoning]
+    [Show calculation using $$...$$ syntax]
+    
+    ⚠️ CRITICAL: ALL MATH IN EXAMPLES MUST USE $$...$$ SYNTAX!
+    
+    CORRECT:
+    $$
+    F = ma = 2 \times 5 = 10 \, N
+    $$
+    
+    WRONG (DO NOT USE):
+    \[
+    F = ma = 2 \times 5 = 10 \, N
+    \]
+    
+    Step 2: [Explain next step]
+    $$
+    [calculation]
+    $$
+    
+    Step 3: [Continue with explanations]
+    $$
+    [final calculation]
+    $$
+    
+    **Answer:**
+    Final result with proper units and significant figures
+    
+    **Physical Interpretation:**
+    Explain what answer means physically - is it reasonable?
+    
+    **Key Learning:**
+    One sentence highlighting main concept this reinforces
+    
+    ❌ REJECT if examples use \[...\] instead of $$...$$
+    
+    
+    NUMERICAL COMPLEXITY REQUIREMENTS:
+    
+    BASIC (40% of numerical examples - Board Exam level):
+    - Single formula application
+    - Direct substitution
+    - 1-2 calculation steps
+    - Example: "Calculate potential at distance r from charge q"
+    - Example: "Find capacitance given Q and V"
+    
+    INTERMEDIATE (40% of numerical examples - NEET level):
+    - Multiple formulas or concepts needed
+    - 3-4 calculation steps
+    - Requires reasoning and understanding
+    - Example: "Capacitor charged to V. Dielectric inserted. Find change in charge, energy, capacitance"
+    - Example: "Three capacitors in mixed combination. Find equivalent capacitance"
+    
+    ADVANCED (20% of numerical examples - JEE level):
+    - Complex multi-step reasoning
+    - Multiple concepts combined
+    - Requires deep understanding
+    - 5+ calculation steps
+    - Example: "Capacitor network with switches. Find charge distribution after switch operation"
+    - Example: "Derive and apply formula for partially filled dielectric capacitor"
+    
+    AVOID: Simple plug-and-chug problems with no conceptual depth
+    
+    SELECTION GUIDE:
+    - Introduction sections → 1 conceptual example (if needed)
+    - Definition sections → 1 conceptual example
+    - Classification sections → 1-2 conceptual examples
+    - Formula sections → 1-2 numerical examples (mix difficulty)
+    - Law/principle sections → 1-2 examples (mix types and difficulty)
+    - Application sections → 1-2 numerical examples (intermediate/advanced)
+    
+    Total: 12-15 examples per chapter (quality over quantity, appropriate mix)
+    
+    STEP 7: MANDATORY STRUCTURED ELEMENTS (TABLES, COMPARISONS, PROPERTIES):
+    
+    ⚠️ CRITICAL: For EVERY chapter, you MUST include these structured elements where applicable!
+    
+    RULE 1: COMPARISON TABLES (MANDATORY for topics with multiple types/categories)
+    
+    When topic involves comparing 2+ items, CREATE A COMPARISON TABLE:
+    
+    Applicable to: Types of materials, circuits, cells, currents, waves, semiconductors, spectra, etc.
+    
+    MANDATORY TABLE FORMAT:
+    
+    ### Comparison: [Topic A] vs [Topic B]
+    
+    | Property/Feature | [Topic A] | [Topic B] |
+    |-----------------|-----------|-----------|
+    | **Definition** | [Clear definition] | [Clear definition] |
+    | **Key Characteristic** | [Main feature] | [Main feature] |
+    | **Formula/Expression** | [If applicable] | [If applicable] |
+    | **Physical Behavior** | [How it behaves] | [How it behaves] |
+    | **Examples** | [2-3 examples] | [2-3 examples] |
+    | **Applications** | [Where used] | [Where used] |
+    | **Advantages** | [2-3 advantages] | [2-3 advantages] |
+    | **Limitations** | [2-3 limitations] | [2-3 limitations] |
+    
+    ⚠️ MINIMUM 6 ROWS in comparison tables! Include formulas in LaTeX where applicable!
+    
+    RULE 2: PROPERTIES TABLES (MANDATORY for materials, devices, phenomena)
+    
+    ### Properties of [Material/Device/Phenomenon]
+    
+    | Property | Description/Value | Physical Significance |
+    |----------|------------------|----------------------|
+    | **Property 1** | [Value/Description] | [Why it matters] |
+    | **Property 2** | [Value/Description] | [Why it matters] |
+    | **Property 3** | [Value/Description] | [Why it matters] |
+    | **Property 4** | [Value/Description] | [Why it matters] |
+    | **Property 5** | [Value/Description] | [Why it matters] |
+    
+    ⚠️ MINIMUM 5 ROWS in properties tables!
+    
+    RULE 3: ADVANTAGES AND LIMITATIONS (MANDATORY for ALL devices and methods)
+    
+    For EVERY device, instrument, or method, you MUST include:
+    
+    ### Advantages
+    
+    1. **[Advantage 1 Title]:** [Detailed explanation in 1-2 sentences]
+    2. **[Advantage 2 Title]:** [Detailed explanation in 1-2 sentences]
+    3. **[Advantage 3 Title]:** [Detailed explanation in 1-2 sentences]
+    4. **[Advantage 4 Title]:** [Detailed explanation in 1-2 sentences]
+    5. **[Advantage 5 Title]:** [Detailed explanation in 1-2 sentences]
+    
+    ### Limitations
+    
+    1. **[Limitation 1 Title]:** [Detailed explanation in 1-2 sentences]
+    2. **[Limitation 2 Title]:** [Detailed explanation in 1-2 sentences]
+    3. **[Limitation 3 Title]:** [Detailed explanation in 1-2 sentences]
+    4. **[Limitation 4 Title]:** [Detailed explanation in 1-2 sentences]
+    5. **[Limitation 5 Title]:** [Detailed explanation in 1-2 sentences]
+    
+    ⚠️ MINIMUM 4 advantages and 4 limitations for each device!
+    ⚠️ Each point must have a descriptive title + detailed explanation!
+    
+    RULE 4: IMPORTANT FEATURES (MANDATORY for devices, laws, phenomena)
+    
+    ### Important Features
+    
+    | Feature | Description | Significance |
+    |---------|-------------|--------------|
+    | **Feature 1** | [What it is] | [Why it's important] |
+    | **Feature 2** | [What it is] | [Why it's important] |
+    | **Feature 3** | [What it is] | [Why it's important] |
+    | **Feature 4** | [What it is] | [Why it's important] |
+    | **Feature 5** | [What it is] | [Why it's important] |
+    
+    ⚠️ MINIMUM 5 features in table format!
+    
+    ENFORCEMENT CHECKLIST FOR EVERY CHAPTER:
+    
+    ✓ At least 2-3 comparison tables for topics with multiple types
+    ✓ At least 2-3 properties tables for materials/devices
+    ✓ Advantages section (4-6 points) for EVERY device
+    ✓ Limitations section (4-6 points) for EVERY device
+    ✓ Important Features table for major devices/laws
+    ✓ Applications section (6-8 applications) for all major topics
+    
+    ❌ REJECT chapter if missing these structured elements!
+    
+    STEP 8: SECTION ENDING (Choose appropriate type - NOT always applications!):
+    
+    ⚠️ IMPORTANT: NOT every section needs "Applications"! Choose based on topic:
+    
+    TYPE A - CONCEPTUAL EXAMPLE (for abstract/difficult topics):
+    ### Conceptual Understanding
+    
+    Use real-world analogy students can relate to:
+    - Electric Dipole → Water molecule bending near charged comb
+    - Equipotential Surfaces → Contour lines on topographic map
+    - Energy Density → Air pressure in balloon
+    
+    Format:
+    "Think of [everyday example]. [Explain how it relates]. 
+    This helps us understand [concept] because [reason]."
+    
+    TYPE B - PHYSICAL INTUITION (for formula-heavy topics):
+    ### Physical Interpretation
+    
+    Explain WHY formula makes sense physically:
+    - Why does potential decrease as 1/r?
+    - Why is work zero on equipotential surface?
+    - What does negative sign in E = -dV/dr mean?
+    
+    TYPE C - KEY INSIGHTS (for derivations):
+    ### Key Insights
+    
+    - What does this result tell us?
+    - When is this formula applicable?
+    - What are the limitations?
+    - Physical significance of each term
+    
+    TYPE D - COMMON MISCONCEPTIONS (for confusing topics):
+    ### Common Misconceptions
+    
+    Address typical student errors:
+    - Potential vs Potential Energy (different!)
+    - Equipotential vs Field Lines (perpendicular!)
+    - Series vs Parallel (charge vs voltage same)
+    
+    TYPE E - SPECIAL CASES (for formulas with conditions):
+    ### Special Cases
+    - Case 1: When distance is very large (far field approximation)
+    - Case 2: At the location of the charge
+    - Case 3: For specific geometric configurations
+    
+    TYPE F - COMPARISON (for related concepts):
+    ### Comparison
+    | Aspect | Concept A | Concept B |
+    |--------|-----------|-----------|
+    
+    TYPE G - APPLICATIONS (only for practical topics):
+    ### Applications
+    Real-world uses, technology applications, everyday phenomena (50-70 words).
+    
+    SELECTION GUIDE:
+    - Coulomb's Law → Derivation
+    - Electric Field → Physical Intuition
+    - Dipole Fields → Comparison (axial vs equatorial)
+    - Gauss's Law → Derivation + Special Cases
+    - Charging Methods → Applications
+    
+    DO NOT force "Applications" in every section!
+    
+    MANDATORY QUALITY CHECKS BEFORE NEXT SECTION:
+    
+    FOR MAIN SECTIONS (##):
+    ✓ Word count is 400-450 words (excluding examples) - INTERNAL CHECK ONLY
+    ✓ Content flows as textbook prose, not bullet points
+    ✓ All NCERT concepts from index covered
+    ✓ Figure placed at TOP after header
+    ✓ 2 high-quality examples with realistic values
+    ✓ All formulas use $$...$$ syntax (NOT \[...\])
+    ✓ Physical intuition explained
+    ❌ REJECT if below 350 words or missing required elements
+    
+    FOR SUBSECTIONS (###) - EXAMPLES ARE MANDATORY:
+    ✓ Word count is 200-250 words MINIMUM for explanation (excluding examples)
+    ✓ Figure/image at TOP of subsection (immediately after heading)
+    ✓ Conceptual example MANDATORY (60-80 words, real-world analogy)
+    ✓ Mathematical example MANDATORY (100-150 words with full step-by-step solution)
+    ✓ All formulas use $$...$$ syntax (NOT \[...\])
+    ✓ Variable definitions for ALL equations (complete with units)
+    
+    ⚠️ CRITICAL: EVERY ### SUBSECTION MUST HAVE EXAMPLES!
+    
+    ❌ REJECT if subsection explanation is less than 200 words
+    ❌ REJECT if no image at TOP of subsection
+    ❌ REJECT if subsection has NO conceptual example
+    ❌ REJECT if subsection has NO mathematical example
+    ❌ REJECT if conceptual example is missing or too brief (< 50 words)
+    ❌ REJECT if mathematical example has no step-by-step solution
+    ❌ REJECT if using \[...\] instead of $$...$$
+    
+    ⚠️ VALIDATION CHECKLIST FOR EACH SUBSECTION:
+    □ Does this ### subsection have an image at top? (YES/NO)
+    □ Does this ### subsection have a **Conceptual Example:** section? (YES/NO)
+    □ Does this ### subsection have a **Mathematical Example:** section? (YES/NO)
+    □ Is the conceptual example 60-80 words? (YES/NO)
+    □ Is the mathematical example 100-150 words with steps? (YES/NO)
+    
+    If ANY answer is NO, REJECT the subsection and regenerate!
+    
+    ⚠️ SUBSECTION STRUCTURE ENFORCEMENT (MANDATORY FOR EVERY ###):
+    
+    EXACT STRUCTURE - DO NOT DEVIATE:
+    
+    ### X.Y.Z Subsection Title
+    
+    <figure style="display: flex; flex-direction: column; align-items: center;">
+    <img src="..." alt="..." style="max-width: 90%; height: auto;">
+    <figcaption><i><b>Figure X.Y.Z:</b> Description</i></figcaption>
+    </figure>
+    
+    [Explanation: 200-250 words - MANDATORY]
+    
+    **Conceptual Example:**
+    
+    [60-80 words real-world analogy - MANDATORY]
+    
+    [Formulas with variable definitions]
+    
+    **Mathematical Example:**
+    
+    **Problem:** [Question]
+    **Given:** [Values]
+    **Solution:**
+    $$
+    [Step 1 calculation]
+    $$
+    $$
+    [Step 2 calculation]
+    $$
+    **Answer:** [Result with interpretation]
+    
+    [100-150 words with steps - MANDATORY]
+    
+    ❌ REJECT if subsection missing ANY of these elements!
+    ❌ REJECT if image is NOT first thing after heading!
+    ❌ REJECT if explanation < 200 words!
+    ❌ REJECT if no "**Conceptual Example:**" section!
+    ❌ REJECT if no "**Mathematical Example:**" section!
+    
+    ⚠️ CRITICAL: DO NOT write "Word count: X words" in the output!
+    This is for your internal verification only. Never include word count statements in the final markdown content.
+    
+    CHAPTER TARGETS:
+    - 10-12 sections × 400-450 words = 4000-5400 words main content
+    - Each subsection: 200-300 words + 2 examples = 350-450 words total
+    - 12-15 high-quality examples total (mix of conceptual and numerical)
+    - 10-12 figures in main sections + 1 figure per subsection
+    
+    STRICT VALIDATION - EXECUTE BEFORE FINALIZING:
+    
+    1. MATH SYNTAX CHECK (CRITICAL):
+       - Search entire output for "\["
+       - Search entire output for "\]"
+       - If FOUND → REJECT entire chapter and regenerate
+       - ALL math must use $$ or $ ONLY
+       - NO EXCEPTIONS for \[...\] syntax
+    
+    2. SUBSECTION VALIDATION (FOR EACH ###):
+       □ Does subsection start with <figure> immediately after heading? YES/NO
+       □ Does subsection have 200-250 word explanation? YES/NO
+       □ Does subsection have "**Conceptual Example:**" section? YES/NO
+       □ Does subsection have "**Mathematical Example:**" section? YES/NO
+       □ Are subsections using ### (3 hashes) not #### (4 hashes)? YES/NO
+       
+       If ANY answer is NO → REJECT that subsection and regenerate it
+    
+    3. HEADING LEVEL CHECK:
+       - Main sections: ## (2 hashes)
+       - Subsections: ### (3 hashes) - NOT ####
+       - Search for "#### X." pattern → if found, REJECT
+    
+    4. WORD COUNT CHECK:
+       - Count words in each subsection explanation
+       - Must be 200-250 words (excluding examples)
+       - If < 200 → REJECT and expand
+    
+    5. EXAMPLE CHECK:
+       - Every ### must have both examples
+       - Search for "**Conceptual Example:**" in each subsection
+       - Search for "**Mathematical Example:**" in each subsection
+       - If missing → REJECT subsection
+    
+    ⚠️ SUBSECTION VALIDATION (MANDATORY):
+    - Count total main sections (##)
+    - Count sections with subsections (###)
+    - Calculate percentage: (sections with subsections / total sections) × 100
+    - MUST be ≥ 70% (e.g., if 10 sections, at least 7 must have subsections)
+    - ❌ REJECT if < 70% of sections have subsections
+    - ❌ REJECT if complex topics (devices, laws, combinations) have NO subsections
+    - ❌ REJECT if NCERT subsections are missing in generated content
+  
+  expected_output: >
+    Complete chapter content (4000-5400 words main content) with:
+    - 10-12 major sections with chapter-based numbering
+    - Each section: 400-450 words of flowing textbook prose
+    - 10-12 figures placed at section tops with HTML format
+    - 12-15 high-quality examples (appropriate type for each topic)
+    - All formulas with proper LaTeX ($ and $$)
+    - Physical intuition and applications throughout
+    - Professional, engaging, student-friendly narrative
+    - 100% NCERT coverage from index
+  
+  agent: content_generator
+  context:
+    - research_physics_chapter
+    - create_topic_index
+
+
+enhance_with_rag:
+  description: >
+    VALIDATE Chapter {chapter_number}: {chapter_name} against the 5 MANDATORY RULES.
+    
+    ⚠️⚠️⚠️ CRITICAL: VALIDATION FIRST - DO THIS BEFORE ANYTHING ELSE! ⚠️⚠️⚠️
+    
+    STEP 1: STRICT VALIDATION (REJECT IF FAILS):
+    
+    For EACH section (## and ###) in the generated content:
+    
+    ⚠️ CRITICAL: Check BOTH main sections (##) AND subsections (###)!
+    
+    FOR MAIN SECTIONS (##) WITHOUT subsections:
+    
+    CHECK 1 - WORD COUNT:
+    - Count words in explanation (exclude examples and formulas)
+    - REQUIREMENT: 400-500 words
+    - IF < 400 words → REJECT section, list it as FAILED
+    
+    CHECK 2 - CONCEPTUAL EXAMPLE:
+    - Search for exact text: "**Conceptual Example:**"
+    - REQUIREMENT: Must exist in section
+    - IF NOT FOUND → REJECT section, list it as FAILED
+    
+    CHECK 3 - MATHEMATICAL EXAMPLE:
+    - Search for exact text: "**Mathematical Example:**"
+    - REQUIREMENT: Must exist in section
+    - IF NOT FOUND → REJECT section, list it as FAILED
+    
+    CHECK 4 - MATH SYNTAX:
+    - Search for "\[" or "\]" or "\(" or "\)" in ENTIRE CHAPTER
+    - REQUIREMENT: Must NOT exist anywhere
+    - Should use $$...$$ for display math and $...$ for inline math
+    - IF FOUND → REJECT chapter, list all locations with line numbers
+    
+    CHECK 5 - IMAGE PRESENT:
+    - Check if <figure> or <img> exists in section
+    - REQUIREMENT: Must have at least one image
+    - IF NOT → REJECT section, list it as FAILED
+    
+    FOR SUBSECTIONS (###):
+    
+    CHECK 1 - WORD COUNT:
+    - Count words in explanation (exclude examples and formulas)
+    - REQUIREMENT: 400-500 words
+    - IF < 400 words → REJECT subsection, list it as FAILED
+    
+    CHECK 2 - CONCEPTUAL EXAMPLE:
+    - Search for exact text: "**Conceptual Example:**"
+    - REQUIREMENT: Must exist in subsection
+    - IF NOT FOUND → REJECT subsection, list it as FAILED
+    
+    CHECK 3 - MATHEMATICAL EXAMPLE:
+    - Search for exact text: "**Mathematical Example:**"
+    - REQUIREMENT: Must exist in subsection
+    - IF NOT FOUND → REJECT subsection, list it as FAILED
+    
+    CHECK 4 - MATH SYNTAX:
+    - Already checked at chapter level
+    
+    CHECK 5 - IMAGE AT TOP:
+    - Check if <figure> or <img> is immediately after ### heading
+    - REQUIREMENT: Must be first thing after heading
+    - IF NOT → REJECT subsection, list it as FAILED
+    
+    VALIDATION RESULT:
+    - If ANY section/subsection FAILS ANY check:
+      * REJECT the entire chapter
+      * Output: "VALIDATION FAILED - Chapter REJECTED"
+      * List ALL failed sections/subsections with specific failures
+      * Example: "Section 1.3: FAILED - Word count 150 (need 400-500), Missing Conceptual Example"
+      * Example: "Subsection 1.2.1: FAILED - Word count 150 (need 400-500), Missing Mathematical Example"
+      * Example: "ENTIRE CHAPTER: FAILED - Found \[ at line 45, 67, 89 (must use $$...$$)"
+      * Demand: "Content generator must regenerate with ALL 5 rules followed"
+      * DO NOT proceed to other checks
+      * DO NOT proceed to formatting
+    
+    - If ALL sections/subsections PASS ALL checks:
+      * Output: "VALIDATION PASSED - All sections and subsections compliant"
+      * Proceed to additional quality checks below
+    
+    ⚠️ YOU MUST REJECT IF VALIDATION FAILS! No exceptions!
+    
+    MANDATORY VERIFICATION CHECKLIST (Execute ONLY if validation passed):
+    
+    1. TOPIC COMPLETENESS VERIFICATION (ZERO OMISSION MANDATE):
+       
+       STEP 1: Get official NCERT structure (Use BOTH tools)
+       
+       A. Query RAG:
+       - "Chapter {chapter_number} {chapter_name} NCERT complete table of contents all sections subsections"
+       - "Chapter {chapter_number} {chapter_name} NCERT all topics list comprehensive"
+       
+       B. Search web with SerperDev:
+       - "NCERT Class 12 Physics Chapter {chapter_number} {chapter_name} complete topic list official syllabus"
+       - Extract topic list from official NCERT website or trusted educational sources
+       
+       STEP 2: Create comprehensive checklist
+       - List EVERY topic, subtopic, concept from NCERT
+       - Include even small topics (e.g., "Charging by induction", "Electroscope")
+       - Mark each as: ✓ Present or ✗ Missing
+       
+       CHAPTER 3 MANDATORY TOPICS (MUST verify all present):
+       ✓ Electric Current
+       ✓ Current Density
+       ✓ Drift Velocity
+       ✓ Ohm's Law
+       ✓ Resistance and Resistivity
+       ✓ Temperature Dependence
+       ✓ Combination of Resistors (Series, Parallel, Mixed)
+       ✓ Cells, EMF, Internal Resistance
+       ✓ Combination of Cells (Series, Parallel)
+       ✓ Kirchhoff's Current Law (KCL)
+       ✓ Kirchhoff's Voltage Law (KVL)
+       ✓ Wheatstone Bridge (CRITICAL - cannot be missing!)
+       ✓ Meter Bridge (CRITICAL - cannot be missing!)
+       ✓ Potentiometer (CRITICAL - with principle and applications!)
+       ✓ Electrical Energy and Power
+       ✓ Heating Effect (Joule's Law)
+       ✓ Carbon Resistors and Color Code
+       
+       STEP 3: Compare with generated content
+       - Go through generated content section by section
+       - Check off topics that are covered
+       - Identify ALL missing topics (even small ones)
+       
+       STEP 4: Add missing content
+       - IF ANY TOPIC MISSING (even small): Query RAG for that specific topic
+       - Write complete section/subsection (200-450 words based on topic size)
+       - Add to appropriate place in chapter structure
+       
+       STEP 5: Final verification
+       - Re-check that ALL topics now covered
+       - REJECT chapter if even ONE NCERT topic omitted
+       
+       CRITICAL: Even "small" topics like "Electroscope", "Charging by induction", 
+       "Conductors in equilibrium" MUST be included. ZERO omissions allowed!
+    
+    2. WORD COUNT VERIFICATION:
+       - Count words in each major section (excluding examples)
+       - REQUIREMENT: Each section 400-450 words
+       - IF BELOW 350 WORDS: Query RAG and expand with more explanation
+       - Total main content must be 4000+ words
+       - IF BELOW 4000: Identify thin sections and expand them
+    
+    3. EXAMPLE QUALITY VERIFICATION:
+       - Count total examples (target: 12-15 high-quality examples)
+       - Check each example for:
+         * Appropriate type (conceptual vs numerical based on topic)
+         * Realistic values for numerical (µC, nC, mA, NOT C or A)
+         * Complete solution steps with explanations
+         * Physical interpretation of answer
+         * Proper difficulty distribution (40% basic, 40% intermediate, 20% advanced)
+       - IF UNREALISTIC VALUES: Replace with realistic ones
+       - IF INCOMPLETE SOLUTIONS: Add missing steps and explanations
+       - IF BELOW 12 EXAMPLES: Add examples to key sections (quality over quantity)
+    
+    4. FORMULA ACCURACY VERIFICATION:
+       - List all formulas in chapter
+       - Query RAG for each: "Chapter {chapter_number} [formula topic] correct formula"
+       - Verify formula matches NCERT exactly
+       - Check all variables defined
+       - Verify units specified
+       - IF INCORRECT: Fix immediately with RAG-verified version
+    
+    5. FIGURE VERIFICATION:
+       - Count total figures (target: 10-12)
+       - Verify each figure:
+         * Placed at section TOP after header
+         * Has descriptive alt text
+         * Has comprehensive caption
+         * Figure number uses chapter-based numbering
+       - IF BELOW 10 FIGURES: Add figures to sections needing visual aids
+       - IF MISPLACED: Move to section top
+    
+    6. CONTENT DEPTH VERIFICATION:
+       - Read each section for depth and clarity
+       - Check for:
+         * Physical intuition explained (not just formulas)
+         * Flowing textbook prose (not bullet points)
+         * Clear explanations suitable for Class 12
+         * Proper transitions between ideas
+       - IF TOO SHALLOW: Query RAG and add deeper explanations
+       - IF BULLET-POINT STYLE: Rewrite as flowing paragraphs
+    
+    7. MATHEMATICAL ACCURACY:
+       - Verify all numerical calculations in examples
+       - Check significant figures
+       - Verify units in answers
+       - IF ERRORS FOUND: Recalculate and fix
+    
+    8. ENHANCEMENT ADDITIONS (if needed):
+       - Add 1-2 "Did You Know" boxes with interesting facts
+       - Add 1-2 "Common Mistake" warnings
+       - Add brief historical context for major discoveries
+       - Add connections to other chapters
+    
+    GENERATE DETAILED ENHANCEMENT REPORT listing:
+    - Topics verified/added
+    - Sections expanded (with word counts)
+    - Examples fixed/added
+    - Formulas verified/corrected
+    - Figures verified/added
+    - Overall quality improvements made
+  
+  expected_output: >
+    Enhanced chapter (4000-5400 words main content) with:
+    - 100% NCERT topic coverage (verified against TOC)
+    - All sections 400-450 words (counted and verified)
+    - 12-15 high-quality examples with appropriate types (verified)
+    - 10-12 properly placed figures (counted)
+    - All formulas accurate (RAG-verified)
+    - Proper depth and flowing prose (checked)
+    - Detailed enhancement report (300-400 words) listing all changes made
+    
+    QUALITY STANDARD: Chapter must be PERFECT before passing to formatter.
+  
+  agent: rag_enhancer
+  context:
+    - research_physics_chapter
+    - create_topic_index
+    - generate_detailed_content
+
+
+create_final_markdown:
+  description: >
+    Format Chapter {chapter_number}: {chapter_name} into publication-ready Markdown document 
+    with PERFECT structure and formatting. This is the FINAL step - output must be FLAWLESS.
+    
+    CRITICAL OUTPUT INSTRUCTIONS:
+    1. DO NOT wrap output in code blocks (```). Output raw Markdown directly.
+    2. DO NOT write meta-descriptions like "The document is assembled above" or "I have created..."
+    3. Your ENTIRE response must be the ACTUAL MARKDOWN CONTENT starting with --- and ending with navigation.
+    4. OUTPUT THE COMPLETE CHAPTER DOCUMENT, not a description of it.
+    
+    DOCUMENT STRUCTURE (Follow this EXACT order):
+    
+    1. YAML FRONTMATTER:
+    ---
+    title: "{chapter_name}"
+    author: "Class 12 Physics"
+    date: 2024-06
+    subject: Physics
+    chapter: {chapter_number}
+    language: en
+    ---
+    
+    2. CHAPTER TITLE:
+    # Chapter {chapter_number}: {chapter_name}
+    
+    3. TABLE OF CONTENTS:
+    ## Table of Contents
+    
+    ⚠️ CRITICAL: List ALL sections AND subsections with proper indentation!
+    
+    Format:
+    1. [{chapter_number}.1 Section Name](#section-anchor)
+    2. [{chapter_number}.2 Section Name](#section-anchor)
+       - [{chapter_number}.2.1 Subsection Name](#subsection-anchor)
+       - [{chapter_number}.2.2 Subsection Name](#subsection-anchor)
+    3. [{chapter_number}.3 Section Name](#section-anchor)
+       - [{chapter_number}.3.1 Subsection Name](#subsection-anchor)
+       - [{chapter_number}.3.2 Subsection Name](#subsection-anchor)
+       - [{chapter_number}.3.3 Subsection Name](#subsection-anchor)
+    ...
+    
+    Example for Chapter 4:
+    9. [4.9 Moving Coil Galvanometer](#49-moving-coil-galvanometer)
+       - [4.9.1 Principle](#491-principle)
+       - [4.9.2 Construction](#492-construction)
+       - [4.9.3 Theory and Derivation](#493-theory-and-derivation)
+       - [4.9.4 Current Sensitivity](#494-current-sensitivity)
+       - [4.9.5 Voltage Sensitivity](#495-voltage-sensitivity)
+       - [4.9.6 Conversion to Ammeter](#496-conversion-to-ammeter)
+       - [4.9.7 Conversion to Voltmeter](#497-conversion-to-voltmeter)
+    
+    [Summary](#summary)
+    [Practice Questions](#practice-questions)
+    [Navigation](#navigation)
+    
+    ⚠️ DO NOT skip subsections in TOC! Every ### header must be listed!
+    
+    4. MAIN CONTENT SECTIONS:
+    Copy all sections from enhanced content with:
+    - Section headers with chapter-based numbering
+    - Figures at section tops
+    - 400-450 word content
+    - Formulas with proper LaTeX
+    - Examples with complete solutions
+    - Applications paragraphs
+    
+    5. COMPREHENSIVE SUMMARY (500-600 WORDS MANDATORY):
+    
+    ## Summary
+    
+    Write comprehensive summary that:
+    - Synthesizes all major concepts from chapter
+    - Highlights key formulas with brief explanations
+    - Discusses interconnections between topics
+    - Emphasizes practical applications
+    - Mentions experimental verification
+    - Provides conceptual overview for revision
+    
+    Structure as 5-7 well-developed paragraphs:
+    - Paragraph 1: Chapter overview and scope (80-100 words)
+    - Paragraphs 2-5: Detailed concept synthesis (300-350 words)
+    - Paragraph 6: Applications and significance (70-90 words)
+    - Paragraph 7: Connections to other chapters (50-70 words)
+    
+    DO NOT write bullet-point list. Write flowing prose.
+    
+    6. PRACTICE QUESTIONS (25-30 QUESTIONS):
+    
+    ## Practice Questions
+    
+    Create varied questions covering:
+    - 8-10 Conceptual (definitions, explanations, reasoning)
+    - 8-10 Numerical (calculations, problem-solving with realistic values)
+    - 5-7 Derivation (prove, derive, show)
+    - 4-5 Application (real-world scenarios)
+    
+    Difficulty distribution:
+    - 40% Basic (Board exam level)
+    - 40% Intermediate (NEET level)
+    - 20% Advanced (JEE level)
+    
+    Format:
+    1. Question text with proper units and realistic values
+    2. Question text...
+    ...
+    
+    7. END OF DOCUMENT:
+    
+    Document ends after Practice Questions section.
+    NO navigation links needed.
+    
+    FORMATTING VALIDATION CHECKLIST (Verify ALL before output):
+    
+    ✓ NO code block wrapper (```) around entire document
+    ✓ Chapter-based numbering throughout ({chapter_number}.1, {chapter_number}.2...)
+    ✓ All section headers use proper Markdown (##, ###)
+    ✓ All figures at section tops with proper HTML format
+    ✓ All math uses $ for inline, $$ for display (with spaces)
+    ✓ All examples properly formatted with bold headers
+    ✓ Summary is 500-600 words of flowing prose
+    ✓ 25-30 varied practice questions
+    ✓ Table of contents has working anchor links
+    ✓ Professional spacing and readability
+    ✓ No broken Markdown syntax
+    ✓ Consistent formatting throughout
+    
+    FINAL QUALITY CHECKS:
+    - Total document length: 6000-7000 words
+    - Main content: 4000-5400 words
+    - Summary: 500-600 words
+    - Questions: 500-800 words
+    - Professional, publication-ready quality
+    - Ready for immediate student use
+  
+  expected_output: >
+    Single publication-ready Markdown file: class_12_physics_chapter_{chapter_number}_{chapter_name}.md
+    
+    Document contains:
+    - YAML frontmatter with metadata
+    - Chapter title with number
+    - Table of contents with 10-12 section links
+    - 10-12 main content sections (4000-5400 words)
+    - 12-15 high-quality examples (appropriate types)
+    - 10-12 figures at section tops
+    - Comprehensive 500-600 word summary (flowing prose)
+    - 25-30 varied practice questions
+    
+    Formatting:
+    - NO code block wrapper around document
+    - Chapter-based numbering throughout
+    - Proper Markdown syntax
+    - Professional appearance
+    - Ready for immediate use
+    
+    Total length: 6000-7000 words
+    Quality: Publication-ready, zero post-processing needed
+  
+  agent: markdown_formatter
+  context:
+    - research_physics_chapter
+    - create_topic_index
+    - generate_detailed_content
+    - enhance_with_rag
+  
+  output_file: "class_12_physics_chapter_{chapter_number}_{chapter_name}.md"

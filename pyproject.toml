@@ -5,29 +5,65 @@ description = "physics_content using crewAI"
 authors = [{ name = "Your Name", email = "you@example.com" }]
 requires-python = ">=3.10,<3.14"
 dependencies = [
-    "crewai-tools>=0.69.0",
-    "crewai[tools]>=0.175.0,<1.0.0",
+    # Core Python dependencies
+    "pydantic>=2,<3",
+    "python-dotenv>=1.0.0",
+    "typing-extensions>=4.14.1",
+
+    # CrewAI Framework
+    "crewai>=0.80.0",
+    "crewai-tools>=0.12.0",
+
+    # CrewAI dependencies (MUST match crewai's exact requirements)
+    "json-repair==0.25.2",
+    "opentelemetry-api>=1.30.0",
+    "opentelemetry-sdk>=1.30.0",
+    "opentelemetry-exporter-otlp-proto-http>=1.30.0",
+
+    # LightRAG (use lightrag-hku, which installs as 'lightrag' module)
+    "lightrag-hku==1.4.7",
+
+    # OpenAI and LLM APIs
+    "openai>=1.0.0",
+
+    # PyTorch (CPU version for Windows - realistic pins)
+    "torch>=2.0.0",
+    "torchvision>=0.15.0",
+
+    # ML/AI Libraries
+    "numpy>=1.24.0",
+    "sentence-transformers>=2.2.0",
+    "transformers>=4.30.0",
+    "accelerate>=0.20.0",
+
+    # Langchain ecosystem
     "langchain>=0.1.0",
     "langchain-community>=0.0.20",
+    "langchain-huggingface>=0.0.1",
+
+    # Vector DBs and search
     "chromadb>=0.4.0",
-    "pypdf>=3.0.0",
-    "sentence-transformers>=2.2.0",
     "faiss-cpu>=1.7.0",
+    "networkx>=3.0",
+    "nano-vectordb>=0.0.4",
+
+    # Document processing
+    "pypdf>=3.0.0",
     "unstructured>=0.10.0",
     "rank-bm25>=0.2.2",
-    "torch>=2.8.0",
-    "torchvision>=0.23.0",
-    "transformers>=4.46.3",
-    "datasets>=4.1.0",
-    "accelerate>=1.10.1",
-    "opencv-python>=4.12.0.88",
-    "pillow>=11.3.0",
-    "pyyaml>=6.0.2",
-    "lightrag-hku>=1.4.8.2",
-    "lightrag>=0.0.0a2",
-    "numpy>=2.2.6",
-    "langchain-huggingface>=0.3.1",
-    "asyncio>=4.0.0",
+
+    # Computer vision
+    "opencv-python>=4.8.0",
+    "pillow>=10.0.0",
+
+    # Utilities
+    "tqdm>=4.65.0",
+    "tiktoken>=0.5.0",
+    "huggingface-hub>=0.20.0",
+    "pyyaml>=6.0.0",
+
+    # Runtime networking stability
+    "aiohttp>=3.9,<4",
 ]
 
 [project.scripts]

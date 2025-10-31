@@ -1,0 +1,60 @@
+# Core Python dependencies
+pydantic>=2,<3
+python-dotenv>=1.0.0
+typing-extensions>=4.14.1
+
+# CrewAI Framework
+crewai>=0.80.0
+crewai-tools>=0.12.0
+
+# CrewAI dependencies (MUST match crewai's exact requirements)
+json-repair==0.25.2
+opentelemetry-api>=1.30.0
+opentelemetry-sdk>=1.30.0
+opentelemetry-exporter-otlp-proto-http>=1.30.0
+
+# LightRAG (SPECIFIC VERSION - installs as 'lightrag' module)
+lightrag-hku==1.4.7
+
+# OpenAI and LLM APIs
+openai>=1.0.0
+
+# PyTorch (CPU version for Windows)
+--extra-index-url https://download.pytorch.org/whl/cpu
+torch>=2.0.0
+torchvision>=0.15.0
+
+# ML/AI Libraries
+numpy>=1.24.0
+sentence-transformers>=2.2.0
+transformers>=4.30.0
+accelerate>=0.20.0
+
+# Langchain ecosystem
+langchain>=0.1.0
+langchain-community>=0.0.20
+langchain-huggingface>=0.0.1
+
+# Vector DBs and search
+chromadb>=0.4.0
+faiss-cpu>=1.7.0
+networkx>=3.0
+nano-vectordb>=0.0.4
+
+# Document processing
+pypdf>=3.0.0
+unstructured>=0.10.0
+rank-bm25>=0.2.2
+
+# Computer vision
+opencv-python>=4.8.0
+pillow>=10.0.0
+
+# Utilities
+tqdm>=4.65.0
+tiktoken>=0.5.0
+huggingface-hub>=0.20.0
+pyyaml>=6.0.0
+
+# Runtime networking stability
+aiohttp>=3.9,<4
