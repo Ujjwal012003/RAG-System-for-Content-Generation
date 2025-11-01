@@ -1,0 +1,11 @@
+[2025-11-01T17:36:39] Using OpenAI multimodal for images/tables/equations (model: gpt-4.1-mini)
+[2025-11-01T17:36:39] Setting up LightRAG model functions with LOCAL MODELS...
+[2025-11-01T17:36:39] RAG-Anything initialized with OpenAI multimodal + OpenAI text (gpt-4.1-mini), local embeddings
+[2025-11-01T17:36:39] Verifying LightRAG initialization...
+[2025-11-01T17:36:47] ✅ LightRAG successfully initialized with pipeline status
+[2025-11-01T17:36:47] ✅ LightRAG is ready for queries
+[2025-11-01T17:36:47] Start: leph1an.pdf
+[2025-11-01T17:36:47] Invoking process_document_complete(timeout=600s) for leph1an.pdf
+[2025-11-01T17:45:37] Done: leph1an.pdf in 530.1s
+[2025-11-01T17:45:37] Start: leph1ps.pdf
+[2025-11-01T17:45:37] Invoking process_document_complete(timeout=600s) for leph1ps.pdf
