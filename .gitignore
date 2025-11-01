@@ -21,3 +21,4 @@ Thumbs.db
 
 # Build artifacts (optional - comment out if you want me to access)
 # artifacts/
+output/

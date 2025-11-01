@@ -236,13 +236,52 @@ class LocalModelProvider:
         # Allow overriding via environment for performance tuning
         self.vision_model = os.getenv("OLLAMA_VISION_MODEL", "llava:7b")
         self.text_model = os.getenv("OLLAMA_TEXT_MODEL", "llama3.1:8b")
-        self.embedding_model = os.getenv("OLLAMA_EMBEDDING_MODEL", "all-minilm")
+        
+        # ✅ NEW: Check if OpenAI embeddings enabled
+        self.use_openai_embedding = os.getenv("USE_OPENAI_EMBEDDING", "0") == "1"
+        
+        if self.use_openai_embedding:
+            self.embedding_model = os.getenv("OPENAI_EMBEDDING_MODEL", "text-embedding-3-small")
+        else:
+            self.embedding_model = os.getenv("OLLAMA_EMBEDDING_MODEL", "all-minilm")
         
         # Create embedding function with proper embedding_dim attribute
         self.embedding_func = self._create_embedding_func()
+
+def _create_embedding_func(self):
+    """Create embedding function with embedding_dim attribute"""
+    
+    # ✅ NEW: Check if using OpenAI embeddings
+    if self.use_openai_embedding:
+        async def embedding_func(texts, **kwargs):
+            try:
+                from openai import OpenAI
+                client = OpenAI()
+                
+                if isinstance(texts, str):
+                    texts = [texts]
+                
+                response = client.embeddings.create(
+                    input=texts,
+                    model=self.embedding_model
+                )
+                
+                return [item.embedding for item in response.data]
+                
+            except Exception as e:
+                print(f"OpenAI embedding error: {e}")
+                # Fallback to random
+                import numpy as np
+                if isinstance(texts, str):
+                    texts = [texts]
+                return [np.random.normal(0, 1, 512).tolist() for _ in texts]
         
-    def _create_embedding_func(self):
-        """Create embedding function with embedding_dim attribute"""
+        # OpenAI text-embedding-3-small = 512 dimensions
+        embedding_func.embedding_dim = 512
+        return embedding_func
+    
+    else:
+        # Original local embedding code
         async def embedding_func(texts, **kwargs):
             try:
                 import importlib
@@ -267,19 +306,11 @@ class LocalModelProvider:
                 import numpy as np
                 if isinstance(texts, str):
                     texts = [texts]
-                
-                embeddings = []
-                for text in texts:
-                    hash_val = hash(text) % (2**32)
-                    np.random.seed(hash_val)
-                    embedding = np.random.normal(0, 1, 384).tolist()
-                    embeddings.append(embedding)
-                
-                return embeddings
+                return [np.random.normal(0, 1, 384).tolist() for _ in texts]
         
-        # Add the required embedding_dim attribute
         embedding_func.embedding_dim = 384
         return embedding_func
+
         
 class OpenAIModelProvider:
     """Provider for OpenAI chat (text + multimodal) using gpt-4.1-mini by default"""
