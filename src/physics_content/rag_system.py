@@ -248,68 +248,68 @@ class LocalModelProvider:
         # Create embedding function with proper embedding_dim attribute
         self.embedding_func = self._create_embedding_func()
 
-def _create_embedding_func(self):
-    """Create embedding function with embedding_dim attribute"""
-    
-    # ✅ NEW: Check if using OpenAI embeddings
-    if self.use_openai_embedding:
-        async def embedding_func(texts, **kwargs):
-            try:
-                from openai import OpenAI
-                client = OpenAI()
-                
-                if isinstance(texts, str):
-                    texts = [texts]
-                
-                response = client.embeddings.create(
-                    input=texts,
-                    model=self.embedding_model
-                )
-                
-                return [item.embedding for item in response.data]
-                
-            except Exception as e:
-                print(f"OpenAI embedding error: {e}")
-                # Fallback to random
-                import numpy as np
-                if isinstance(texts, str):
-                    texts = [texts]
-                return [np.random.normal(0, 1, 512).tolist() for _ in texts]
+    def _create_embedding_func(self):
+        """Create embedding function with embedding_dim attribute."""
         
-        # OpenAI text-embedding-3-small = 512 dimensions
-        embedding_func.embedding_dim = 512
-        return embedding_func
-    
-    else:
-        # Original local embedding code
-        async def embedding_func(texts, **kwargs):
-            try:
-                import importlib
-                ollama = importlib.import_module('ollama')
-                import numpy as np
-                
-                if isinstance(texts, str):
-                    texts = [texts]
-                
-                embeddings = []
-                for text in texts:
-                    response = ollama.embeddings(
-                        model=self.embedding_model,
-                        prompt=text
+        # ✅ NEW: Check if using OpenAI embeddings
+        if self.use_openai_embedding:
+            async def embedding_func(texts, **kwargs):
+                try:
+                    from openai import OpenAI
+                    client = OpenAI()
+                    
+                    if isinstance(texts, str):
+                        texts = [texts]
+                    
+                    response = client.embeddings.create(
+                        input=texts,
+                        model=self.embedding_model
                     )
-                    embeddings.append(response['embedding'])
-                
-                return embeddings
-                
-            except Exception as e:
-                print(f"Local embedding error: {e}")
-                import numpy as np
-                if isinstance(texts, str):
-                    texts = [texts]
-                return [np.random.normal(0, 1, 384).tolist() for _ in texts]
+                    
+                    return [item.embedding for item in response.data]
+                    
+                except Exception as e:
+                    print(f"OpenAI embedding error: {e}")
+                    # Fallback to random
+                    import numpy as np
+                    if isinstance(texts, str):
+                        texts = [texts]
+                    return [np.random.normal(0, 1, 512).tolist() for _ in texts]
+            
+            # OpenAI text-embedding-3-small = 512 dimensions
+            embedding_func.embedding_dim = 512
+            return embedding_func
         
-        embedding_func.embedding_dim = 384
-        return embedding_func
+        else:
+            # Original local embedding code
+            async def embedding_func(texts, **kwargs):
+                try:
+                    import importlib
+                    ollama = importlib.import_module('ollama')
+                    import numpy as np
+                    
+                    if isinstance(texts, str):
+                        texts = [texts]
+                    
+                    embeddings = []
+                    for text in texts:
+                        response = ollama.embeddings(
+                            model=self.embedding_model,
+                            prompt=text
+                        )
+                        embeddings.append(response['embedding'])
+                    
+                    return embeddings
+                    
+                except Exception as e:
+                    print(f"Local embedding error: {e}")
+                    import numpy as np
+                    if isinstance(texts, str):
+                        texts = [texts]
+                    return [np.random.normal(0, 1, 384).tolist() for _ in texts]
+            
+            embedding_func.embedding_dim = 384
+            return embedding_func
 
         
 class OpenAIModelProvider:
